@@ -9,3 +9,4 @@ export const AUTH_FAIL = 'AUTH_FAIL';
 
 /* ghibli studiso */
 export const LIST_FILMS = '@search/LIST_FILMS';
+export const CHANGE_IMAGE = '@search/CAHNGE_IMG';

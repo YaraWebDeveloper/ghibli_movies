@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import {listAllFilms} from '../../actions/search/SearchActions'
 
 /* class */
-class  SearcherContainer extends React.Component {
+class SearcherContainer extends React.Component {
 
   static propTypes = {
     _listAllFilms: PropTypes.func.isRequired
@@ -20,54 +20,51 @@ class  SearcherContainer extends React.Component {
   }
 
   /* component did mount */
-  componentDidMount(){
+  componentDidMount() {
     // execute
     this.props._listAllFilms();
   }
 
   /* node */
-  _getNode () {
+  _getNode() {
     // return
-    var {films, pureFilms} = this.props;
-
+    var {
+      films
+    } = this.props;
     // fils
-    var node = pureFilms.map((data, i)=>{
+    var node = Object.keys(films).map((key, i) => {
       // log datat
-
-      return <img src={data['img']} style={{width: '100px', height: '100px', backgoundColor: '#000'}} key={i}/>
+      var data = films[key];
+      if (data.img) {
+        return <img src={data.img} style={{
+            width: 'auto',
+            height: '100px',
+            backgoundColor: '#000'
+          }} key={i}/>
+      }
     });
 
     return node;
   }
 
   // render
-  render(){
+  render() {
     // return
-    return (
-      <div>
-        default class
-        {
-          this._getNode()
-        }
-      </div>
-    )
+    return (<div>
+      {this._getNode()}
+    </div>)
   }
 }
 
 /* actions to props */
-var _actToProps = () =>{
+var _actToProps = () => {
   console.log(listAllFilms);
-  return {
-    _listAllFilms: listAllFilms
-  }
+  return {_listAllFilms: listAllFilms}
 }
 
 //* actiosn to state *//
 var _staToProps = (state) => {
-  return {
-    films: state.main.search.films,
-    pureFilms: state.main.search.pureFilms
-  }
+  return {films: state.main.search.films, pureFilms: state.main.search.pureFilms}
 }
 // export
 export default connect(_staToProps, _actToProps())(SearcherContainer);

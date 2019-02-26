@@ -1,5 +1,5 @@
 /* actions */
-import {LIST_FILMS} from '../../constants/ActionTypes';
+import {LIST_FILMS, CHANGE_IMAGE} from '../../constants/ActionTypes';
 import _ from 'lodash';
 
 // import api
@@ -17,7 +17,7 @@ export const listAllFilms = () => {
       var _response = response.data;
       // sender}
       var _return = {};
-      _response.map(async (data) => {
+      _response.map((data) => {
         // data
         _return[data.id] = data;
         _return[data.id]['img'] = '';
@@ -47,28 +47,30 @@ var listImages = (_return, _response, dispatch) => {
         var _rand = Math.floor(Math.random() * (3 - 0 + 1) + 0);
 
         // get image
-        var image = response.data.value[_rand].contentUrl;
+        var image = response.data.value[_rand].thumbnailUrl;
         _return[_data.id]['img'] = image;
         _response[control]['img'] = image;
         // para no sobrecargar el server
-        setTimeout(()=> {
+        dispatch(_changeImage({films: _return, pureFilms: _response}));
+        setTimeout(() => {
           control++;
           _ped();
-        }, 500);
+        }, 100);
       });
-    }else{
+    } else {
       // si quiero enviar todo de una
-      dispatch(_films({films: _return, pureFilms: _response}));
-      console.log('acabe -->', control);
+      // console.log('acabe -->', control);
+      dispatch(_changeImage({films: _return, pureFilms: _response}));
     }
   }
-
   // ped
   _ped();
-
 }
 
 /* ------------------- pure dispatch -------------------------- */
 var _films = (action) => {
   return {type: LIST_FILMS, films: action.films, pureFilms: action.pureFilms}
+}
+var _changeImage = (action) => {
+  return {type: CHANGE_IMAGE, id: action.id, image: action.image}
 }
