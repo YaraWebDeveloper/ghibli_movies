@@ -1,0 +1,23 @@
+/* Using enviroment */
+global.enviroment = 'dev';
+
+/* Using to export constants */
+const conf = {
+  dev: {},
+  prod: {},
+  test: {},
+}
+
+/* Enviroment on development */
+conf['dev']['base_url'] = 'http://10.41.6.41';
+conf['dev']['port'] = '3100';
+// conf['dev']['apiServer'] = 'https://3056b8b4.ngrok.io/';
+conf['dev']['apiServer'] = 'http://pengibotback.keos.co/';
+conf['dev']['fileName'] = 'all_dist';
+conf['dev']['minify'] = true;
+conf['dev']['mediaApi'] = 'http://10.41.6.41:3100/dist/';
+conf['dev']['keyCrypto'] = '';
+
+
+/* Export constants */
+module.exports = conf[global.enviroment];
