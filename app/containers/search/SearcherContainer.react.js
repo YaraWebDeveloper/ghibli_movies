@@ -6,6 +6,10 @@ import PropTypes from 'prop-types';
 // actions
 import {listAllFilms} from '../../actions/search/SearchActions'
 
+/* component */
+import Header from '../../components/Header.react';
+import Body from '../../components/Body.react';
+
 /* class */
 class SearcherContainer extends React.Component {
 
@@ -50,9 +54,17 @@ class SearcherContainer extends React.Component {
   // render
   render() {
     // return
-    return (<div>
-      {this._getNode()}
-    </div>)
+    return (<section className="hero is-fullheight">
+      <div className="hero-head">
+        <Header/>
+      </div>
+
+      <div className="hero-body">
+        <div className="container has-text-centered">
+          <Body/> {this._getNode()}
+        </div>
+      </div>
+    </section>)
   }
 }
 
