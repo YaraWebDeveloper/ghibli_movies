@@ -44,6 +44,39 @@ html {
       cursor: pointer;
       color: #8e8e8e;
     }
+
+    ._list-autocomplete {
+      width: 100%;
+      background: #fff;
+      position: absolute;
+      top: 85%;
+      box-shadow: 4px 3px 25px rgba(84, 84, 84, 0.28);
+      max-height: 300px;
+      padding: 5px;
+      display: none;
+
+      &.is-active{
+        display: block;
+      }
+
+      ._item-complete {
+        width: 100%;
+        display: block;
+        padding: 8px 10px;
+        font-size: 17px;
+        font-size: 15px;
+        cursor: pointer;
+        .animate();
+
+        &:not(:last-child) {
+          border-bottom: 1px solid #d6d6d6;
+        }
+
+        &:hover {
+          background-color: rgba(251, 149, 55, 0.1);
+        }
+      }
+    }
   }
 
   .__img-logo {
@@ -75,6 +108,7 @@ html {
   .__just-content {
     ._items-films {
       ._content-item {
+        position: relative;
         height: 200px;
         box-shadow: 2px 2px 20px rgba(0,0,0,.25);
         border-radius: 15px;
@@ -82,6 +116,53 @@ html {
         background-size: auto 100%;
         background-position: center;
         background-repeat: no-repeat;
+        cursor: pointer;
+        overflow: hidden;
+
+        &.had-image {
+          background-size: cover;
+        }
+
+        &:hover {
+          ._content-info {
+            opacity: 1;
+          }
+        }
+
+        ._content-info {
+          opacity: 0;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.7803921568627451);
+          color: #fff;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          .animate();
+
+          ._title {
+            font-size: 20px;
+            line-height: 30px;
+            border-bottom: 1px solid #fff;
+            padding-bottom: 13px;
+            font-weight: 500;
+            letter-spacing: 3px;
+          }
+
+          ._item {
+            display: block;
+            width: 100%;
+            float: left;
+
+            &:last-child {
+              order: 1;
+            }
+          }
+
+          i {
+            color: #FBBF40;
+          }
+        }
       }
     }
   }

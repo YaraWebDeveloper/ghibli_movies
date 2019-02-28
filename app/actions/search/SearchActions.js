@@ -17,20 +17,32 @@ export const listAllFilms = () => {
       var _response = response.data;
       // sender}
       var _return = {};
-      _response.map((data) => {
+      _response.map(async (data, control) => {
         // data
         _return[data.id] = data;
         _return[data.id]['img'] = '';
-        // list images
+        _return[data.id]['banner'] = '';
+        // list images con cuenta paga de azure
+        await apiSearch.searchImage(data.title).then((response) => {
+          // get a random number
+          var _rand_1 = Math.floor(Math.random() * (3 - 0 + 1) + 0);
+          var _rand_2 = Math.floor(Math.random() * (3 - 0 + 1) + 0);
+
+          // get image
+          var image = response.data.value[_rand_1].thumbnailUrl;
+          var banner = response.data.value[_rand_2].thumbnailUrl;
+          dispatch(_changeImage({id: data.id, image: image, banner: banner}));
+          // para no sobrecargar el server
+        });
+
       });
       // log response
       dispatch(_films({films: _return, pureFilms: _response}));
-      listImages(_return, _response, dispatch);
     });
   }
 }
 
-// list images
+// list images solo usar si se usa version gratuita de azure bing
 var listImages = (_return, _response, dispatch) => {
   // get keys
   var control = 0;
@@ -51,16 +63,16 @@ var listImages = (_return, _response, dispatch) => {
         _return[_data.id]['img'] = image;
         _response[control]['img'] = image;
         // para no sobrecargar el server
-        dispatch(_changeImage({films: _return, pureFilms: _response}));
+        dispatch(_changeImage({id: _data.id, image: image}));
+
         setTimeout(() => {
           control++;
           _ped();
-        }, 100);
+        }, 200)
       });
     } else {
       // si quiero enviar todo de una
-      // console.log('acabe -->', control);
-      dispatch(_changeImage({films: _return, pureFilms: _response}));
+      // dispatch(_changeImage({films: _return, pureFilms: _response}));
     }
   }
   // ped
@@ -72,5 +84,5 @@ var _films = (action) => {
   return {type: LIST_FILMS, films: action.films, pureFilms: action.pureFilms}
 }
 var _changeImage = (action) => {
-  return {type: CHANGE_IMAGE, id: action.id, image: action.image}
+  return {type: CHANGE_IMAGE, id: action.id, image: action.image, banner: action.banner}
 }

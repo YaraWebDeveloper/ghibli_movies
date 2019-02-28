@@ -26,7 +26,8 @@ var searchReducer = (state = initial_state, action) => {
           ...state.films,
           [action.id]: {
             ...state.films[action.id],
-            img: action.img
+            img: action.image,
+            banner: action.banner,
           }
         },
       }
