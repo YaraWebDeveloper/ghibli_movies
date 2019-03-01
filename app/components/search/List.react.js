@@ -13,14 +13,24 @@ class List extends React.Component {
 
     /* states */
     this.state = {
-      active: true
+      active: false
     }
+
+    /* container */
+    this.container = React.createRef();
+  }
+
+  /* component did mount */
+  componentDidMount() {
+    this._outside();
   }
 
   /* handle change */
-  onClick(data) {
+  onClick(data, e) {
     this.props.onClick(data);
-    this.setState({active: false})
+
+    // prevent
+    this.setState({active: false});
   }
 
   /* node */
@@ -54,14 +64,40 @@ class List extends React.Component {
 
   }
 
+  /* on blur */
+  /* click outsude */
+  _outside() {
+    var _self = this;
+    // event listeners
+    document.addEventListener("click", (evt) => {
+      // const flyoutElement = this.list.current;
+      const flyoutElement = this.props.control;
+      const flyoutConst = this.container.current;
+      let targetElement = evt.target; // clicked element
+
+      do {
+        if ((targetElement == flyoutElement) || (flyoutConst == targetElement)) {
+          // Do nothing, just return.
+          this.setState({active: true});
+          //alert('inside ');
+          return;
+        }
+        // Go up the DOM.
+        targetElement = targetElement.parentNode;
+      } while (targetElement);
+      // state
+      this.setState({active: false});
+    });
+  }
+
   // parent
   render() {
     var term = this.props.term.toLowerCase();
-    var _active = (this.props.active && term.length >= 2)
+    var _active = (this.state.active && term.length >= 1)
       ? 'is-active'
       : '';
     // return
-    return (<div className={"_list-autocomplete " + _active}>
+    return (<div className={"_list-autocomplete " + _active} ref={this.container}>
       {this._nodes()}
     </div>)
   }

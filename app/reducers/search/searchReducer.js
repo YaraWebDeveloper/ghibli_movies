@@ -1,10 +1,15 @@
 /* import reducer */
-import {LIST_FILMS, CHANGE_IMAGE} from '../../constants/ActionTypes';
+import {
+  LIST_FILMS,
+  CHANGE_IMAGE,
+  UPDATE_TERM
+} from '../../constants/ActionTypes';
 
 // intial state
 var initial_state = {
   films: {},
-  pureFilms: []
+  pureFilms: [],
+  term: ''
 }
 
 /* reducer */
@@ -31,6 +36,13 @@ var searchReducer = (state = initial_state, action) => {
           }
         },
       }
+      break;
+    case UPDATE_TERM:
+      // search api
+      return {
+        ...state,
+        term: action.term
+      };
       break;
     default:
       return state;

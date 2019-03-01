@@ -1,5 +1,5 @@
 /* actions */
-import {LIST_FILMS, CHANGE_IMAGE} from '../../constants/ActionTypes';
+import {LIST_FILMS, CHANGE_IMAGE, UPDATE_TERM} from '../../constants/ActionTypes';
 import _ from 'lodash';
 
 // import api
@@ -79,10 +79,21 @@ var listImages = (_return, _response, dispatch) => {
   _ped();
 }
 
+
+// update termn
+export const changeTerm = (term) => {
+  return (dispatch) =>{
+    dispatch(_changeTerm({term}));
+  }
+}
+
 /* ------------------- pure dispatch -------------------------- */
 var _films = (action) => {
   return {type: LIST_FILMS, films: action.films, pureFilms: action.pureFilms}
 }
 var _changeImage = (action) => {
   return {type: CHANGE_IMAGE, id: action.id, image: action.image, banner: action.banner}
+}
+var _changeTerm = (action) => {
+  return {type: UPDATE_TERM, term: action.term}
 }
