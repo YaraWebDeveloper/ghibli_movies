@@ -3,7 +3,7 @@
 Basado en [React Ethereal](https://github.com/YaraWebDeveloper/react_ethereal)
 
 ### Instalación
-1. Cloar o descargar el repositorio
+1. Clonar o descargar el repositorio
 `$ git clone  https://github.com/YaraWebDeveloper/ghibli_movies.git`
 2. Entrar en la carpeta `$ cd ghibli_movies`
 3. Ejecutar [npm](https://npmjs.com) `$ npm i`
