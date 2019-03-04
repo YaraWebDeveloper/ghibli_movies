@@ -1,50 +1,34 @@
-# React Ethereal
+# Ghilbi Movies Search
 
-Ethereal is a simply stater-kit architecture ReactJS based on Redux.
+Basado en [React Ethereal](https://github.com/YaraWebDeveloper/react_ethereal)
 
-  - Simply clone or download, easy made with NodeJS
-  - Folder hierachy ready-to-use
-  - Ethereal use [Webpack](https://webpack.js.org/) and [Gulp](https://gulpjs.com/) for transpile javascript, css, and html if you need
-  - Simply customization, just add any other node package from [npm](https://npmjs.com)
+### Instalación
+1. Cloar o descargar el repositorio
+`$ git clone  https://github.com/YaraWebDeveloper/ghibli_movies.git`
+2. Entrar en la carpeta `$ cd ghibli_movies`
+3. Ejecutar [npm](https://npmjs.com) `$ npm i`
+4. Si hay problemas de compilación. `$ npm i --only=dev`
+5. Editar archivo de configuración con puerto, base_url y demás setups `app/conf/conf.js`
+6. Ejecutar `$ npm start`
 
+### Descripción
+Mediante el consumo de la APiI de Ghibli realicé un buscador dinámico acompañado de imágenes sacadas de la API de búsqueda de BingAzure ya que por defecto la api principal no contaba con ellas.
 
-### Installation
-1. Clone or download this repo
-`$ git clone  https://github.com/YaraWebDeveloper/react_ethereal.git`
-2. Navigate into folder `$ cd react_ethereal`
-3. Execute [npm](https://npmjs.com) install command `$ npm i`
-4. Solve devs problems `$ npm i --only=dev`
-4. Run start command `$ npm start`
+Realice la prueba en una arquitectura basada en Redux Basado en [React Ethereal](https://github.com/YaraWebDeveloper/react_ethereal) escrita en su totalidad por mi, usando patrón de Store, Actions, Reducer, Components. La principal razón es por la comodidad que presento con esta arquitectura.
 
+Las principales mejoras o Trade-Offs sería mejorar la visualización, algunos componentes de búsqueda y mejoras en la descripción, como mostrar personajes y mas info de cada película.
 
-# Docs
-Ethereal is a simple starter-kit built in [ReactJS](https://reactjs.org/) based on [Redux](https://redux.js.org/) architecture that uses a number of open source projects to work properly: (you can find it on ` package.json`)
+La mejor parte es la búsqueda asíncrona de las imágenes para cada una de las películas, se puede encontrar en `app/actions/search/SearchActions.js`
 
-* ReactJS
-* React DOM
-* React Router
-* React Router Redux
-* React Router DOM
-* React Cookie
-* ExpressJS
-* Redux
-* React Redux
-* Redux Thunk
-* Redux Logger
-* Redux DEVTools Extension
-* History
-* Gulp (see `.gulpfile`)
-* Webpack (see `webpack.config.js`)
-* Babel (see `.babelrc`)
 
 
 ### TODO
-- Complete docs
-- Testing
+- Realizar pruebas automatizadas.
 
 
 ## License
 - MIT
+
 ---
 **Enjoy the ride, love the ending**
 by [YaraWebDeveloper](https://github.com/YaraWebDeveloper/react_ethereal)
