@@ -20,6 +20,7 @@ Las principales mejoras o Trade-Offs sería mejorar la visualización, algunos c
 
 La mejor parte es la búsqueda asíncrona de las imágenes para cada una de las películas, se puede encontrar en `app/actions/search/SearchActions.js`
 
+La aplicación queda alojada en la siguiente URL: [Ghibli Movies - YaraWeb](https://ghibli-movies.herokuapp.com/)
 
 
 ### TODO
