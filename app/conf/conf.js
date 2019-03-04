@@ -21,7 +21,7 @@ conf['dev']['mediaApi'] = 'http://10.41.6.41:3500/dist/';
 conf['dev']['keyCrypto'] = 'K30s2018G4@';
 
 /* Enviroment on development */
-conf['prod']['base_url'] = 'https://ghibli-movies.herokuapp.com/';
+conf['prod']['base_url'] = 'https://ghibli-movies.herokuapp.com';
 conf['prod']['port'] = '';
 conf['prod']['apiServer'] = 'https://ghibliapi.herokuapp.com/';
 conf['prod']['apiImg'] = 'https://api.cognitive.microsoft.com/bing/v7.0/images/search';
