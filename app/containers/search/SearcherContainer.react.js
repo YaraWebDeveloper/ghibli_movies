@@ -9,6 +9,7 @@ import {listAllFilms} from '../../actions/search/SearchActions'
 /* component */
 import Header from '../../components/Header.react';
 import Body from '../../components/Body.react';
+import Viewer from '../../components/Viewer.react';
 
 /* class */
 class SearcherContainer extends React.Component {
@@ -40,6 +41,7 @@ class SearcherContainer extends React.Component {
       <div className="hero-body" id="_main-content">
         <div className="container has-text-centered __just-content">
           <Body/>
+          <Viewer/>
         </div>
       </div>
     </section>)

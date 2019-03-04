@@ -57,8 +57,7 @@ html {
       display: none;
       height: auto;
       /* overflow-y: scroll; */
-
-      &.is-active{
+      &.is-active {
         display: block;
       }
 
@@ -165,6 +164,105 @@ html {
           i {
             color: #FBBF40;
           }
+        }
+      }
+    }
+  }
+
+  ._viewer-content {
+    position: fixed;
+    right: 0;
+    top: 0;
+    transform: translateX(100%);
+    height: 100%;
+    width: 35%;
+    z-index: 100;
+    background: #fff;
+    box-shadow: -5px 3px 15px rgba(0,0,0, .2);
+    .animate();
+    overflow-y: scroll;
+
+    &.is-active {
+      transform: translateX(0%);
+    }
+
+    ._button-container {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      border: none;
+      padding: 0;
+      color: #ffffff;
+      height: auto;
+      font-size: 20px;
+      border-radius: 50%;
+      background: transparent;
+      box-shadow: 1px 2px 15px rgb(0, 0, 0);
+      z-index: 10;
+    }
+
+    ._back-viewer {
+      background-size: cover;
+      width: 100%;
+      height: 245px;
+      background-repeat: no-repeat;
+      filter: blur(1px);
+      -webkit-filter: blur(1px);
+      -webkit-box-shadow: inset 0 -100px 125px -5px rgba(0, 0, 0, 0.88);
+      -moz-box-shadow: inset 0 -100px 125px -5px rgba(0, 0, 0, 0.88);
+      box-shadow: inset 0 -100px 125px -5px rgba(0, 0, 0, 0.88);
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-position: center;
+      z-index: 10;
+    }
+
+    ._item-content {
+      position: relative;
+      z-index: 20;
+      padding: 20px;
+      top: 13%;
+
+      ._only-img {
+        width: 130px;
+        height: 200px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        border-radius: 10px;
+        box-shadow: 4px 2px 15px rgba(255,255,255, .21);
+        border: 2px solid #f69236;
+      }
+
+      ._info-media {
+        ._item-cont-info {
+          color: #fff;
+
+          strong {
+            font-size: 20px;
+            line-height: 20px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            color: #fff;
+            text-shadow: 4px 0 12px #000;
+            height: 40px;
+            display: block;
+          }
+
+          small {
+            text-shadow: 4px 0 12px #000;
+          }
+
+          i {
+            color: #fbbf40;
+          }
+        }
+
+        ._item-descr {
+          font-weight: 300;
+          padding-top: 20px;
+          text-shadow: 1px 0px 0px #fff;
         }
       }
     }

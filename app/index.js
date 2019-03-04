@@ -29,6 +29,9 @@ const store = createStore(rootReducer, {
 }, composeEnhancers(applyMiddleware(...middleware)));
 
 
+// global
+global.store = store;
+
 /* render app */
 render(<Provider store={store}>
   <ConnectedRouter history={history}>

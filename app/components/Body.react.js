@@ -7,11 +7,21 @@ import _ from 'lodash';
 /* componentes */
 import Item from './body/Item.react';
 
+// import actions
+import {activeId} from '../actions/search/SearchActions.js';
+
 // class
 class Body extends React.Component {
   // super
   constructor() {
     super();
+  }
+
+  /* onclick item */
+  onClickItem(id) {
+    console.log('click me', id);
+    /* this .active */
+    this.props.activeId(id);
   }
 
   /* node */
@@ -23,16 +33,16 @@ class Body extends React.Component {
     var term = this.props.term.toLowerCase();
     // fils
     var node = Object.keys(films).map((key, i) => {
-      // log datat
+      // iterate data igual
       var data = films[key];
       if (term != '') {
         if (data.title.toLowerCase().includes(term)) {
-          return (<Item data={data} key={i}/>)
+          return (<Item data={data} key={i} onClickItem={this.onClickItem.bind(this)}/>)
         } else {
           return null;
         }
-      }else{
-        return (<Item data={data} key={i}/>)
+      } else {
+        return (<Item data={data} key={i} onClickItem={this.onClickItem.bind(this)}/>)
       }
     });
 
@@ -57,5 +67,9 @@ class Body extends React.Component {
 var _staToProps = (state) => {
   return {films: state.main.search.films, pureFilms: state.main.search.pureFilms, term: state.main.search.term}
 }
+
+var _actToProps = () => {
+  return {activeId}
+}
 // export class
-export default connect(_staToProps)(Body);
+export default connect(_staToProps, _actToProps())(Body);

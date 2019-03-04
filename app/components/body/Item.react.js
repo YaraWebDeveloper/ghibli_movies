@@ -10,7 +10,8 @@ class Item extends React.Component {
   /* item */
   onClickItem(){
     var {id} = this.props.data;
-    console.log('click me', id);
+    console.log(this.props);
+    this.props.onClickItem(id);
   }
 
 

@@ -2,14 +2,16 @@
 import {
   LIST_FILMS,
   CHANGE_IMAGE,
-  UPDATE_TERM
+  UPDATE_TERM,
+  UPDATE_ACTIVE
 } from '../../constants/ActionTypes';
 
 // intial state
 var initial_state = {
   films: {},
   pureFilms: [],
-  term: ''
+  term: '',
+  active: ''
 }
 
 /* reducer */
@@ -42,6 +44,13 @@ var searchReducer = (state = initial_state, action) => {
       return {
         ...state,
         term: action.term
+      };
+      break;
+    case UPDATE_ACTIVE:
+      // search api
+      return {
+        ...state,
+        active: action.active
       };
       break;
     default:

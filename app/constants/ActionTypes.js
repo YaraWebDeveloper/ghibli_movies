@@ -11,3 +11,4 @@ export const AUTH_FAIL = 'AUTH_FAIL';
 export const LIST_FILMS = '@search/LIST_FILMS';
 export const UPDATE_TERM = '@search/UPDATE_TERM';
 export const CHANGE_IMAGE = '@search/CAHNGE_IMG';
+export const UPDATE_ACTIVE = '@search/UPDATE_ACTIVE';

@@ -1,5 +1,10 @@
 /* actions */
-import {LIST_FILMS, CHANGE_IMAGE, UPDATE_TERM} from '../../constants/ActionTypes';
+import {
+  LIST_FILMS,
+  CHANGE_IMAGE,
+  UPDATE_TERM,
+  UPDATE_ACTIVE
+} from '../../constants/ActionTypes';
 import _ from 'lodash';
 
 // import api
@@ -9,7 +14,7 @@ var apiSearch = new SearchApi();
 // exports
 export const listAllFilms = () => {
   // return
-  return(dispatch) => {
+  return (dispatch) => {
 
     // test
     apiSearch.listSearch().then((response) => {
@@ -31,13 +36,20 @@ export const listAllFilms = () => {
           // get image
           var image = response.data.value[_rand_1].thumbnailUrl;
           var banner = response.data.value[_rand_2].thumbnailUrl;
-          dispatch(_changeImage({id: data.id, image: image, banner: banner}));
+          dispatch(_changeImage({
+            id: data.id,
+            image: image,
+            banner: banner
+          }));
           // para no sobrecargar el server
         });
 
       });
       // log response
-      dispatch(_films({films: _return, pureFilms: _response}));
+      dispatch(_films({
+        films: _return,
+        pureFilms: _response
+      }));
     });
   }
 }
@@ -63,7 +75,10 @@ var listImages = (_return, _response, dispatch) => {
         _return[_data.id]['img'] = image;
         _response[control]['img'] = image;
         // para no sobrecargar el server
-        dispatch(_changeImage({id: _data.id, image: image}));
+        dispatch(_changeImage({
+          id: _data.id,
+          image: image
+        }));
 
         setTimeout(() => {
           control++;
@@ -82,18 +97,47 @@ var listImages = (_return, _response, dispatch) => {
 
 // update termn
 export const changeTerm = (term) => {
-  return (dispatch) =>{
-    dispatch(_changeTerm({term}));
+  return (dispatch) => {
+    dispatch(_changeTerm({
+      term
+    }));
+  }
+}
+
+// update termn
+export const activeId = (active) => {
+  return (dispatch) => {
+    dispatch(_changeIdActive({
+      active
+    }));
   }
 }
 
 /* ------------------- pure dispatch -------------------------- */
 var _films = (action) => {
-  return {type: LIST_FILMS, films: action.films, pureFilms: action.pureFilms}
+  return {
+    type: LIST_FILMS,
+    films: action.films,
+    pureFilms: action.pureFilms
+  }
 }
 var _changeImage = (action) => {
-  return {type: CHANGE_IMAGE, id: action.id, image: action.image, banner: action.banner}
+  return {
+    type: CHANGE_IMAGE,
+    id: action.id,
+    image: action.image,
+    banner: action.banner
+  }
 }
 var _changeTerm = (action) => {
-  return {type: UPDATE_TERM, term: action.term}
+  return {
+    type: UPDATE_TERM,
+    term: action.term
+  }
+}
+var _changeIdActive = (action) => {
+  return {
+    type: UPDATE_ACTIVE,
+    active: action.active
+  }
 }
